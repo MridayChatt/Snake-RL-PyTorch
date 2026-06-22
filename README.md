@@ -1,10 +1,32 @@
-# Teach AI To Play Snake! Reinforcement Learning With PyTorch and Pygame
+# Snake RL — Deep Q-Learning with PyTorch
 
-In this Python Reinforcement Learning Tutorial series we teach an AI to play Snake! We build everything from scratch using Pygame and PyTorch. The tutorial consists of 4 parts:
+An autonomous Snake agent trained using Deep Q-Learning (DQN). Built with PyTorch and Pygame.
 
-You can find all tutorials on my channel: [Playlist](https://www.youtube.com/playlist?list=PLqnslRFeH2UrDh7vUmJ60YrmWd64mTTKV)
+## Architecture
+- **State:** 11-dimensional vector (danger ahead/left/right, current direction, food location)
+- **Model:** Linear Q-Network (11 → 256 → 3)
+- **Memory:** Experience replay with batch size 1000
+- **Exploration:** Epsilon-greedy decay
 
-- Part 1: I'll show you the project and teach you some basics about Reinforcement Learning and Deep Q Learning.
-- Part 2: Learn how to setup the environment and implement the Snake game.
-- Part 3: Implement the agent that controls the game.
-- Part 4: Implement the neural network to predict the moves and train it.
+## Setup
+```bash
+pip install pygame torch numpy matplotlib
+```
+
+## Run
+```bash
+# Train the AI
+python agent.py
+
+# Play manually
+python snake_game_human.py
+```
+
+## Files
+| File | Description |
+|------|-------------|
+| `agent.py` | DQN agent — state, memory, action |
+| `model.py` | Neural net + Q-trainer |
+| `game.py` | Snake environment (Pygame) |
+| `helper.py` | Live score plotting |
+| `snake_game_human.py` | Human-playable version |
